@@ -10,54 +10,81 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class AddjobPage {
-	RemoteWebDriver driver = null;
-	FluentWait<WebDriver> Wait = null;
+import com.orangehrm.Keyword;
+import com.orangehrm.locators.Locator;
+import com.orangehrm.testbase.TestBase;
 
-	@BeforeMethod
-	public void setUp() throws Exception {
-		driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		Wait = new FluentWait<WebDriver>(driver);
-		Wait.withTimeout(Duration.ofSeconds(60));
-		Wait.pollingEvery((Duration.ofMillis(500)));
-		Wait.ignoring(NoSuchElementException.class);
-	}
+public class AddjobPage extends TestBase{
 
 	@Test
 	public void varifyAddEmployeeJob() throws InterruptedException {
-		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+		Keyword keyword = new Keyword();
 
-		Wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name=\"username\"]")))
-				.sendKeys("Admin");
-		driver.findElement(By.xpath("//input[@name=\"password\"]")).sendKeys("admin123");
-		driver.findElement(By.xpath("//button[@type=\"submit\"]")).click();
-		Wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@href,'AdminMod')]")));
+		keyword.waitForElementToBeVisible(By.xpath("//input[@name=\"username\"]")).sendKeys("Admin");
+		Keyword.driver.findElement(By.xpath("//input[@name=\"username\"]")).sendKeys("Admin");
 
-		driver.findElement(By.xpath("//a[contains(@href,'AdminMod')]")).click();
-		Wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[@class=\"oxd-topbar-body-nav-tab-item\"])[2]")));
+		Keyword.driver.findElement(By.xpath("//input[@name=\"password\"]")).sendKeys("admin123");
+		Keyword.driver.findElement(By.xpath("//button[@type=\"submit\"]")).click();
+		keyword.waitForElementToBeVisible(By.xpath("//a[contains(@href,'AdminMod')]"));
 
-		driver.findElement(By.xpath("(//span[@class=\"oxd-topbar-body-nav-tab-item\"])[2]")).click();
-		
-		driver.findElement(By.xpath("//a[text()='Job Titles']")).click();
-		Wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class=\"oxd-button oxd-button--medium oxd-button--secondary\"]")));
+		Keyword.driver.findElement(By.xpath("//a[contains(@href,'AdminMod')]")).click();
+		keyword.waitForElementToBeVisible(By.xpath("(//span[@class=\"oxd-topbar-body-nav-tab-item\"])[2]"));
 
-		driver.findElement(By.xpath("//button[@class=\"oxd-button oxd-button--medium oxd-button--secondary\"]"))
+		Keyword.driver.findElement(By.xpath("(//span[@class=\"oxd-topbar-body-nav-tab-item\"])[2]")).click();
+
+		Keyword.driver.findElement(By.xpath("//a[text()='Job Titles']")).click();
+		keyword.waitForElementToBeVisible(
+				By.xpath("//button[@class=\"oxd-button oxd-button--medium oxd-button--secondary\"]"));
+
+		Keyword.driver.findElement(By.xpath("//button[@class=\"oxd-button oxd-button--medium oxd-button--secondary\"]"))
 				.click();
-		Wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//input[@class=\"oxd-input oxd-input--active\"])[2]")));
+		keyword.waitForElementToBeVisible(By.xpath("(//input[@class=\"oxd-input oxd-input--active\"])[2]"));
 
-		driver.findElement(By.xpath("(//input[@class=\"oxd-input oxd-input--active\"])[2]"))
+		Keyword.driver.findElement(By.xpath("(//input[@class=\"oxd-input oxd-input--active\"])[2]"))
 				.sendKeys(" Senior Software Tester");
-		driver.findElement(By.xpath("//button[@type=\"submit\"]")).click();
-		//Wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h6[text()='Job Titles']")));
-Thread.sleep(6000);
-		String actual= driver.findElement(By.xpath("//h6[text()='Job Titles']")).getText();
-		
+		Keyword.driver.findElement(By.xpath("//button[@type=\"submit\"]")).click();
+		// Wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h6[text()='Job
+		// Titles']")));
+		Thread.sleep(5000);
+		String actual = Keyword.driver.findElement(By.xpath("//h6[text()='Job Titles']")).getText();
+
 		Assert.assertEquals(actual, "Job Titles");
-		
+
 	}
+
+	@Test
+	public void varifyAddEmployeeJobUsingKeyword() throws InterruptedException{
+		Keyword keyword = new Keyword();
+		//keyword.waitForElementToBeVisible(By.xpath("//input[@name=\"username\"]"));
+		Thread.sleep(6000);
+		keyword.enterText(Locator.username, "Admin");
+		keyword.enterText(Locator.password, "admin123");
+		keyword.click(Locator.submitbtn);
+		//keyword.waitForElementToBeVisible(By.xpath("//a[contains(@href,'AdminMod')]"));
+		Thread.sleep(6000);
+		keyword.click(Locator.adminmod);
+		//keyword.waitForElementToBeVisible(By.xpath("(//span[@class=\"oxd-topbar-body-nav-tab-item\"])[2]"));
+		Thread.sleep(6000);
+        keyword.click(Locator.job);
+        keyword.click(Locator.jobtitle);
+        //keyword.waitForElementToBeVisible(By.xpath("//button[@class=\"oxd-button oxd-button--medium oxd-button--secondary\"]"));
+				Thread.sleep(6000);
+        keyword.click(Locator.addb);
+		//keyword.waitForElementToBeVisible(By.xpath("(//input[@class=\"oxd-input oxd-input--active\"])[2]"));
+        Thread.sleep(6000);
+        keyword.enterText(Locator.addt,"Senior Tester" );
+        keyword.click(Locator.subtn);
+		Thread.sleep(6000);
+	String actual=	keyword.getText(Locator.JobTitlesh, keyword);
+		Assert.assertEquals(actual, "Job Titles");
+
+
+	}
+
 }
