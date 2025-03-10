@@ -51,7 +51,7 @@ public class AddjobPage extends TestBase{
 		Keyword.driver.findElement(By.xpath("//button[@type=\"submit\"]")).click();
 		// Wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h6[text()='Job
 		// Titles']")));
-		Thread.sleep(6000);
+		Thread.sleep(5000);
 		String actual = Keyword.driver.findElement(By.xpath("//h6[text()='Job Titles']")).getText();
 
 		Assert.assertEquals(actual, "Job Titles");
