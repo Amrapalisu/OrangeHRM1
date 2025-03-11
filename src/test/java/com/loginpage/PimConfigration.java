@@ -42,7 +42,7 @@ public class PimConfigration {
 		Wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class=\"oxd-button oxd-button--medium oxd-button--secondary\"]"))).click();
 		Wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//input[@class=\"oxd-input oxd-input--active\"])[2]")));
 
-		driver.findElement(By.xpath("(//input[@class=\"oxd-input oxd-input--active\"])[2]")).sendKeys(" mad");
+		driver.findElement(By.xpath("(//input[@class=\"oxd-input oxd-input--active\"])[2]")).sendKeys(" madi");
 		Wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type=\"submit\"]")));
 
 		driver.findElement(By.xpath("//button[@type=\"submit\"]")).click();
