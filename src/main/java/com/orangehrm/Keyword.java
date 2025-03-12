@@ -78,15 +78,10 @@ public class Keyword {
 			driver.findElement(By.partialLinkText(locatorValue)).click();
 		}else if(locatorType.equalsIgnoreCase("xpath")) {
 			driver.findElement(By.xpath(locatorValue)).click();
-		}
+		}  
        
        
-       
-       
-       
-       
-       
-       
+           
 	}
 	public String getText(String locator, Object perdetail) {
 		return driver.findElement(By.xpath(locator)).getText();
