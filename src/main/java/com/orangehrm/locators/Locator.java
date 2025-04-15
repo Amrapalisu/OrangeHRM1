@@ -18,5 +18,7 @@ String addb = "//button[@class=\"oxd-button oxd-button--medium oxd-button--secon
 String addt = "(//input[@class=\"oxd-input oxd-input--active\"])[2]";
 String subtn = "//button[@type=\"submit\"]";
 String JobTitlesh = "//h6[text()='Job Titles']";
+String JobTit = "//h6[text()='Job Titles']";
+
 
 }
