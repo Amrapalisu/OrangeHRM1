@@ -82,6 +82,7 @@ public class Keyword {
 			driver.findElement(By.partialLinkText(locatorValue)).click();
 		}else if(locatorType.equalsIgnoreCase("xpath")) {
 			driver.findElement(By.xpath(locatorValue)).click();
+
 		}
        
        }
