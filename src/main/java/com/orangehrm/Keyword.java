@@ -33,6 +33,8 @@ public class Keyword {
 			throw new InvalidBrowserError(browserName);
 
 		}
+		driver.manage().window().maximize(); 
+
 		Wait = new FluentWait<WebDriver>(Keyword.driver);
 		Wait.withTimeout(Duration.ofSeconds(60));
 		Wait.pollingEvery((Duration.ofMillis(500)));
@@ -42,23 +44,25 @@ public class Keyword {
 	public void launchurl(String url) {
 		driver.get(url);
 	}
- /**
-  * use this method to click on {@code webElement} by its xpath. this method doesn't support other locator strategies
-  * @param by
-  * @return
-  */
+ 
 	public void enterText(String locator, String textToEnter) {
 		driver.findElement(By.xpath(locator)).sendKeys(textToEnter);
      
+	}
+	
+	/**
+	  * use this method to click on {@code webElement} by its xpath. this method doesn't support other locator strategies
+	  * @param by
+	  * @return
+	  */
+	public void click(String locator) {
+     driver.findElement(By.xpath(locator)).click();
 	}
 	/**
 	 * this method can be used to click on element, you need to provide locator type and locator-value
 	 * @param locatorType that is one of following: id,name,css,tagname,classname,linktext,etc
 	 * 
 	 */
-	public void click(String locator) {
-     driver.findElement(By.xpath(locator)).click();
-	}
 	public void click(String locatorType, String locatorValue) {
        if (locatorType.equalsIgnoreCase("id")) {
 	     driver.findElement(By.id(locatorValue)).click();
@@ -78,21 +82,16 @@ public class Keyword {
 			driver.findElement(By.partialLinkText(locatorValue)).click();
 		}else if(locatorType.equalsIgnoreCase("xpath")) {
 			driver.findElement(By.xpath(locatorValue)).click();
+
 		}
        
-       
-       
-       
-       
-       
-       
-       
-	}
+       }
+	
 	public String getText(String locator, Object perdetail) {
 		return driver.findElement(By.xpath(locator)).getText();
 		}
    
-	public WebElement waitForElementToBeVisible(By by) {
+	public  WebElement waitForElementToBeVisible(By by) {
 		Wait.until(ExpectedConditions.visibilityOfElementLocated(by));
 		return driver.findElement(by);
 	}

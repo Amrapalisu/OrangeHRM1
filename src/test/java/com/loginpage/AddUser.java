@@ -8,6 +8,7 @@ import java.util.NoSuchElementException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -18,13 +19,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class AddUser {
-	public class HomePageTest {
+	
 		RemoteWebDriver driver = null;
 		FluentWait<WebDriver> Wait = null;
 
 		@BeforeMethod
 		public void setUp() throws Exception {
-			driver = new FirefoxDriver();
+			driver = new ChromeDriver();
 			driver.manage().window().maximize();
 			Wait = new FluentWait<WebDriver>(driver);
 			Wait.withTimeout(Duration.ofSeconds(60));
@@ -58,6 +59,7 @@ public class AddUser {
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("(//div[@class=\"oxd-select-text-input\"])[1]")).click();
 			driver.findElement(By.xpath("//div[@role='listbox']/descendant::*[contains(text(),'ESS')]")).click();
+			// div[@role='dialog']/descendant::*[contains(text(),'ESS')]
 			driver.findElement(By.xpath("//input[@placeholder=\"Type for hints...\"]")).sendKeys("John");
 			Thread.sleep(3000);
 
@@ -71,12 +73,12 @@ public class AddUser {
 				Assert.assertTrue(isFound);
 			}
 		}
-	@AfterClass
-	public void tearDown() throws Exception {
-		driver.quit();
+
+		@AfterClass
+		public void tearDown() throws Exception {
+			driver.quit();
+		}
+
 	}
-		
-	}
-		
-		
-}
+
+
