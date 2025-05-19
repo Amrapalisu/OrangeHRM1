@@ -3,12 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.loginpage.PimConfigration">
+      <class name="com.loginpage.AddEmp">
         <methods>
-          <include name="setUp"/>
-          <include name="verifyDataImportAddSuccessfully"/>
+          <include name="verifyThatTheEmployeeIsSuccessfullyAddedByCheckingTheEmpListForPersonalDetailsUsingKeywords"/>
         </methods>
-      </class> <!-- com.loginpage.PimConfigration -->
+      </class> <!-- com.loginpage.AddEmp -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

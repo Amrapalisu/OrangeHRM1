@@ -15,6 +15,8 @@ import org.testng.annotations.Test;
 
 import com.orangehrm.Keyword;
 import com.orangehrm.locators.Locator;
+import static com.orangehrm.util.Locators.*;
+import com.orangehrm.util.PropertiesUtil;
 
 public class AddEmp {
 	@Test
@@ -70,17 +72,14 @@ public class AddEmp {
 		keyword.click("xpath", Locator.pimmenu);
 		keyword.waitForElementToBeVisible(By.xpath("//a[text()=\"Add Employee\"]"));
 		keyword.click("xpath", Locator.addemp);
-		keyword.waitForElementToBeVisible(By.xpath("//input[@placeholder=\\\"First Name\\\"]"));
-		keyword.enterText(Locator.fname, "Amrap");
+		keyword.waitForElementToBeVisible(By.xpath("//input[@placeholder=\"First Name\"]"));
+		keyword.enterText(getLocator("fname"), "Amrap");
 		keyword.enterText(Locator.mname, "M");
 		keyword.enterText(Locator.lname, "Sonta");
 		keyword.waitForElementToBeVisible(By.xpath("//button[@type=\"submit\"]"));
-        keyword.click("xpath",Locator.subbtn);
+		keyword.click("xpath", Locator.subbtn);
 		keyword.waitForElementToBeVisible(By.xpath("//h6[normalize-space()='Personal Details']"));
-        String conformmsg = keyword.getText("xpath",Locator.perdetail);
+		String conformmsg = keyword.getText("xpath", Locator.perdetail);
 		Assert.assertEquals("Personal Details", conformmsg);
-
-        
-
 	}
 }

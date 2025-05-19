@@ -2,20 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-03-07T13:07:26 IST" name="Default suite" finished-at="2025-03-07T13:07:45 IST" duration-ms="18572">
+  <suite started-at="2025-04-18T12:10:20 IST" name="Default suite" finished-at="2025-04-18T12:11:04 IST" duration-ms="44637">
     <groups>
     </groups>
-    <test started-at="2025-03-07T13:07:26 IST" name="Default test" finished-at="2025-03-07T13:07:45 IST" duration-ms="18572">
-      <class name="com.loginpage.PimConfigration">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.loginpage.PimConfigration@a38c7fe]" started-at="2025-03-07T13:07:26 IST" name="setUp" finished-at="2025-03-07T13:07:32 IST" duration-ms="5296" status="PASS">
+    <test started-at="2025-04-18T12:10:20 IST" name="Default test" finished-at="2025-04-18T12:11:04 IST" duration-ms="44637">
+      <class name="com.loginpage.AddUser">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.loginpage.AddUser@51c668e3]" started-at="2025-04-18T12:10:20 IST" name="setUp" finished-at="2025-04-18T12:10:28 IST" duration-ms="8680" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="verifyDataImportAddSuccessfully()[pri:0, instance:com.loginpage.PimConfigration@a38c7fe]" started-at="2025-03-07T13:07:32 IST" name="verifyDataImportAddSuccessfully" finished-at="2025-03-07T13:07:45 IST" duration-ms="13191" status="PASS">
+        <test-method signature="verifyIfNameOfAlreadyCreateduserPopulatesInList()[pri:0, instance:com.loginpage.AddUser@51c668e3]" started-at="2025-04-18T12:10:28 IST" name="verifyIfNameOfAlreadyCreateduserPopulatesInList" finished-at="2025-04-18T12:11:04 IST" duration-ms="35470" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyDataImportAddSuccessfully -->
-      </class> <!-- com.loginpage.PimConfigration -->
+        </test-method> <!-- verifyIfNameOfAlreadyCreateduserPopulatesInList -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.loginpage.AddUser@51c668e3]" started-at="2025-04-18T12:11:04 IST" name="tearDown" finished-at="2025-04-18T12:11:04 IST" duration-ms="405" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.loginpage.AddUser -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
