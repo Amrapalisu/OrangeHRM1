@@ -1,7 +1,7 @@
 package com.orangehrm.util;
 
-public class Locator {
-	public static String getLocator() {
+public class Locators {
+	public static String getLocator(String key) {
 return PropertiesUtil.getProperty(key);
 
 	}
