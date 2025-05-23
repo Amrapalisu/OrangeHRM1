@@ -5,6 +5,7 @@ import java.util.NoSuchElementException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.annotations.AfterMethod;
@@ -19,7 +20,7 @@ public class TestBase {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		Keyword keyword = new Keyword();
-		keyword.launchBrowser("Chrome");
+		keyword.launchBrowser("Firefox");
         keyword.launchurl(App.getAppUrl("qa"));		
 	}
 
