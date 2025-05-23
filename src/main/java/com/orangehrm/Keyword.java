@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.InvalidSelectorException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,6 +15,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 
 import com.orangehrm.errors.InvalidBrowserError;
+
 
 public class Keyword {
 	public static RemoteWebDriver driver = null;
@@ -33,7 +35,7 @@ public class Keyword {
 			throw new InvalidBrowserError(browserName);
 
 		}
-		driver.manage().window().maximize(); 
+		driver.manage().window().maximize();
 
 		Wait = new FluentWait<WebDriver>(Keyword.driver);
 		Wait.withTimeout(Duration.ofSeconds(60));
@@ -44,57 +46,84 @@ public class Keyword {
 	public void launchurl(String url) {
 		driver.get(url);
 	}
- 
+
 	public void enterText(String locator, String textToEnter) {
 		driver.findElement(By.xpath(locator)).sendKeys(textToEnter);
-     
+
 	}
-	
+
+	public void enterText(String locatorType, String locatorValue, String textToEnter) {
+		if (locatorType.equalsIgnoreCase("xpath")) {
+			driver.findElement(By.xpath("locatorValue")).sendKeys("textToEnter");
+
+		} else if (locatorType.equalsIgnoreCase("css")) {
+			driver.findElement(By.cssSelector("locatorValue")).sendKeys("textToEnter");
+		} else if (locatorType.equalsIgnoreCase("id")) {
+			driver.findElement(By.id("locatorValue")).sendKeys("textToEnter");
+		} else if (locatorType.equalsIgnoreCase("name")) {
+			driver.findElement(By.name("locatorValue")).sendKeys("textToEnter");
+		} else if (locatorType.equalsIgnoreCase("tagName")) {
+			driver.findElement(By.tagName("locatorValue")).sendKeys("textToEnter");
+		} else if (locatorType.equalsIgnoreCase("className")) {
+			driver.findElement(By.className("locatorValue")).sendKeys("textToEnter");
+		} else if (locatorType.equalsIgnoreCase("linkText")) {
+			driver.findElement(By.linkText("locatorValue")).sendKeys("textToEnter");
+		} else if (locatorType.equalsIgnoreCase("partialLinkText")) {
+			driver.findElement(By.partialLinkText("locatorValue")).sendKeys("textToEnter");
+		} else {
+			throw new InvalidSelectorException(locatorType);
+		}
+
+	}
+
 	/**
-	  * use this method to click on {@code webElement} by its xpath. this method doesn't support other locator strategies
-	  * @param by
-	  * @return
-	  */
+	 * use this method to click on {@code webElement} by its xpath. this method
+	 * doesn't support other locator strategies
+	 * 
+	 * @param by
+	 * @return
+	 */
 	public void click(String locator) {
-     driver.findElement(By.xpath(locator)).click();
+		driver.findElement(By.xpath(locator)).click();
 	}
+
 	/**
-	 * this method can be used to click on element, you need to provide locator type and locator-value
-	 * @param locatorType that is one of following: id,name,css,tagname,classname,linktext,etc
+	 * this method can be used to click on element, you need to provide locator type
+	 * and locator-value
+	 * 
+	 * @param locatorType that is one of following:
+	 *                    id,name,css,tagname,classname,linktext,etc
 	 * 
 	 */
 	public void click(String locatorType, String locatorValue) {
-       if (locatorType.equalsIgnoreCase("id")) {
-	     driver.findElement(By.id(locatorValue)).click();
-}
-       else if(locatorType.equalsIgnoreCase("name")) {
-	driver.findElement(By.name(locatorValue)).click();
-	}
-       else if(locatorType.equalsIgnoreCase("css")) {
-    	   driver.findElement(By.cssSelector(locatorValue)).click();
-	}else if(locatorType.equalsIgnoreCase("tagname")) {
-		driver.findElement(By.tagName(locatorValue)).click();
-		}else if(locatorType.equalsIgnoreCase("clasname")) {
+		if (locatorType.equalsIgnoreCase("id")) {
+			driver.findElement(By.id(locatorValue)).click();
+		} else if (locatorType.equalsIgnoreCase("name")) {
+			driver.findElement(By.name(locatorValue)).click();
+		} else if (locatorType.equalsIgnoreCase("css")) {
+			driver.findElement(By.cssSelector(locatorValue)).click();
+		} else if (locatorType.equalsIgnoreCase("tagname")) {
+			driver.findElement(By.tagName(locatorValue)).click();
+		} else if (locatorType.equalsIgnoreCase("clasname")) {
 			driver.findElement(By.className(locatorValue)).click();
-		}else if(locatorType.equalsIgnoreCase("linktext")) {
+		} else if (locatorType.equalsIgnoreCase("linktext")) {
 			driver.findElement(By.linkText(locatorValue)).click();
-		}else if(locatorType.equalsIgnoreCase("partiallinktext")) {
+		} else if (locatorType.equalsIgnoreCase("partiallinktext")) {
 			driver.findElement(By.partialLinkText(locatorValue)).click();
-		}else if(locatorType.equalsIgnoreCase("xpath")) {
+		} else if (locatorType.equalsIgnoreCase("xpath")) {
 			driver.findElement(By.xpath(locatorValue)).click();
 
+		} else {
+			throw new InvalidSelectorException(locatorType);
 		}
-       
-       }
-	
+	}
+
 	public String getText(String locator, Object perdetail) {
 		return driver.findElement(By.xpath(locator)).getText();
-		}
-   
-	public  WebElement waitForElementToBeVisible(By by) {
+	}
+
+	public WebElement waitForElementToBeVisible(By by) {
 		Wait.until(ExpectedConditions.visibilityOfElementLocated(by));
 		return driver.findElement(by);
 	}
-
-	}
-
+}
