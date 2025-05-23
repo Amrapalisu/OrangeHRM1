@@ -21,6 +21,4 @@ String JobTitlesh = "//h6[text()='Job Titles']";
 
 //String Job = "//h6[text()='Job Titles']";
 //String Jobfinish = "//h6[text()='Job Titles']";
-
-
 }
