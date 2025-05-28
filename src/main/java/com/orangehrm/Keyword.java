@@ -122,8 +122,7 @@ public class Keyword {
 		return driver.findElement(By.xpath(locator)).getText();
 	}
 
-	public WebElement waitForElementToBeVisible(By by) {
-		Wait.until(ExpectedConditions.visibilityOfElementLocated(by));
-		return driver.findElement(by);
+	public WebElement waitForElementToBeVisible(WebElement usernameTxtBx) {
+		return Wait.until(ExpectedConditions.visibilityOf(usernameTxtBx));
 	}
 }
