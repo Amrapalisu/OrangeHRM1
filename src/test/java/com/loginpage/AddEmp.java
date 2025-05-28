@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
@@ -15,12 +16,15 @@ import org.testng.annotations.Test;
 
 import com.orangehrm.Keyword;
 import com.orangehrm.locators.Locator;
+import com.orangehrm.pages.OrLoginPage;
+import com.orangehrm.testbase.TestBase;
+
 import static com.orangehrm.util.Locators.*;
 
 import com.orangehrm.util.App;
 import com.orangehrm.util.PropertiesUtil;
 
-public class AddEmp {
+public class AddEmp extends TestBase{
 	@Test
 	public void verifyThatTheEmployeeIsSuccessfullyAddedByCheckingTheEmpListForPersonalDetails() {
 		Keyword keyword = new Keyword();
@@ -85,4 +89,33 @@ public class AddEmp {
 		String conformmsg = keyword.getText("xpath", Locator.perdetail);
 		Assert.assertEquals("Personal Details", conformmsg);
 	}
+
+	@Test
+	public void verifyThatTheEmployeeIsSuccessfullyAddedByCheckingTheEmpListForPersonalDetailsUsingPOM() {
+		
+		OrLoginPage loginpage=new OrLoginPage();
+		loginpage.waitforUsernameToBeVisible();
+		loginpage.enterUsername("Admmin");
+		loginpage.enterPassword("admin123");
+		loginpage.clickonLoginbtn();
+	}
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 }
