@@ -10,13 +10,13 @@ import com.orangehrm.Keyword;
 import com.orangehrm.util.App;
 
 public class OrLoginPage {
-	@FindBy(css = "input[placeholder=\"Username\"]")
+	@FindBy(css = "input[name=\"username\"]")
 	WebElement usernameTxtBx;
 
-	@FindBy(css = "input[type=\"password\"]")
+	@FindBy(css = "input[type=password]")
 	WebElement passwordTxtBx;
 
-	@FindBy(css = "button[type=\"submit\"]")
+	@FindBy(css = "button[type=submit]")
 	WebElement loginbtn;
 	public OrLoginPage() {
 		PageFactory.initElements(Keyword.driver, this);

@@ -16,7 +16,9 @@ import org.testng.annotations.Test;
 
 import com.orangehrm.Keyword;
 import com.orangehrm.locators.Locator;
+import com.orangehrm.pages.DashboardPage;
 import com.orangehrm.pages.OrLoginPage;
+import com.orangehrm.pages.PimPage;
 import com.orangehrm.testbase.TestBase;
 
 import static com.orangehrm.util.Locators.*;
@@ -95,9 +97,17 @@ public class AddEmp extends TestBase{
 		
 		OrLoginPage loginpage=new OrLoginPage();
 		loginpage.waitforUsernameToBeVisible();
-		loginpage.enterUsername("Admmin");
+		loginpage.enterUsername("Admin");
 		loginpage.enterPassword("admin123");
 		loginpage.clickonLoginbtn();
+		
+		DashboardPage D = new DashboardPage();
+		D.waitForPimMenuToBevisibile();
+		D.clickonPimMenu();
+		
+		 PimPage P = new PimPage();
+		 P.waitForAddEmployeeToBevisibile();
+		 P.clickonAddemployee();
 	}
 
 		
