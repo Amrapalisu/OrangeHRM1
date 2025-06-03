@@ -93,20 +93,23 @@ public class AddEmp extends TestBase{
 	}
 
 	@Test
-	public void verifyThatTheEmployeeIsSuccessfullyAddedByCheckingTheEmpListForPersonalDetailsUsingPOM() {
+	public void verifyThatTheEmployeeIsSuccessfullyAddedByCheckingTheEmpListForPersonalDetailsUsingPOM() throws InterruptedException {
 		
 		OrLoginPage loginpage=new OrLoginPage();
-		loginpage.waitforUsernameToBeVisible();
+		Thread.sleep(4000);
+		//loginpage.waitforUsernameToBeVisible();
 		loginpage.enterUsername("Admin");
 		loginpage.enterPassword("admin123");
 		loginpage.clickonLoginbtn();
 		
 		DashboardPage D = new DashboardPage();
-		D.waitForPimMenuToBevisibile();
+		Thread.sleep(4000);
+		//D.waitForPimMenuToBevisibile();
 		D.clickonPimMenu();
 		
 		 PimPage P = new PimPage();
-		 P.waitForAddEmployeeToBevisibile();
+		 //P.waitForAddEmployeeToBevisibile();
+		 Thread.sleep(4000);
 		 P.clickonAddemployee();
 	}
 
