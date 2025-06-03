@@ -17,7 +17,7 @@ String jobtitle = "//a[text()='Job Titles']";
 String addb = "//button[@class=\"oxd-button oxd-button--medium oxd-button--secondary\"]";
 String addt = "(//input[@class=\"oxd-input oxd-input--active\"])[2]";
 String subtn = "//button[@type=\"submit\"]";
-String JobTitlesh = "//h6[text()='Job Titles']";
+Object pdetails = a.orangehrm-tabs-item[href="/web/index.php/pim/viewPersonalDetails/empNumber/311"];
 
 //String Job = "//h6[text()='Job Titles']";
 //String Jobfinish = "//h6[text()='Job Titles']";
